@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "entropy-maker"
+version = "0.1.0"
+description = "Post-only Hyperliquid/Entropy market-making toolkit. Paper by default."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Kent" }]
+keywords = ["hyperliquid", "entropy", "market-making", "post-only", "alo"]
+dependencies = []
+
+[project.optional-dependencies]
+live = ["hyperliquid-python-sdk>=0.19"]
+ws = ["websocket-client>=1.8"]
+dev = ["pytest>=8"]
+
+[project.urls]
+Homepage = "https://github.com/kentsmallt/entropy-maker"
+
+[project.scripts]
+entropy-maker = "entropy_maker.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = [".", "src"]
+testpaths = ["tests"]

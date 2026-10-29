@@ -1,0 +1,9 @@
+[Unit]
+Description=Cancel entropy-maker tagged orders once
+After=network-online.target
+
+[Service]
+Type=oneshot
+EnvironmentFile=-/etc/entropy-maker.env
+ExecStart=/opt/entropy-maker/.venv/bin/python -m entropy_maker.ops.watchdog --env-file /etc/entropy-maker.env
+NoNewPrivileges=true

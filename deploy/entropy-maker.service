@@ -1,0 +1,17 @@
+[Unit]
+Description=Entropy maker (paper unless the env file arms live mode)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+EnvironmentFile=-/etc/entropy-maker.env
+ExecStart=/opt/entropy-maker/.venv/bin/entropy-maker run --env-file /etc/entropy-maker.env
+ExecStop=/opt/entropy-maker/.venv/bin/entropy-maker cancel-ours --env-file /etc/entropy-maker.env
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,3 @@
+# Paper mode uses the Python standard library only.
+# Install live signing support with: pip install -e ".[live]"
+# hyperliquid-python-sdk
